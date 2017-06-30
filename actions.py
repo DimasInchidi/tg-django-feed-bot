@@ -4,7 +4,7 @@ from database import Database
 
 
 def reset_timer(bot, update):
-    if str(update.message.chat_id) == '316919926':
+    if str(update.message.chat_id) == '-1001146340312':
         db = Database()
         db.set_last_activity()
         logging.info("Time reseted")
@@ -43,8 +43,8 @@ def callback_activity(bot, update):
                 message += blogs + '\n\n'
             if links != ">>Links":
                 message += links + '\n\n'
-            bot.sendMessage(chat_id='316919926', text=message, parse_mode='HTML')
-            # db.set_last_posts()
+            bot.sendMessage(chat_id='-1001146340312', text=message, parse_mode='HTML', disable_web_page_preview=True)
+            db.set_last_posts()
         else:
             logging.info("user not active, but no new unsend feed")
     else:

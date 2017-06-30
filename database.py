@@ -44,7 +44,7 @@ class Database:
     def set_last_posts(self):
         con = self._con
         cur = con.cursor()
-        time_val = float(datetime.now().timestamp())
+        time_val = int(datetime.now().timestamp())
         cur.execute("UPDATE posts SET publish_time = %s WHERE publish_time = 0", (time_val,))
         con.commit()
 

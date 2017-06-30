@@ -14,20 +14,20 @@ class Bot:
     def run(self):
         u = self._updater
         u.start_webhook(
-            # listen='0.0.0.0',
-            # port=self._port,
-            # url_path=self._token,
+            listen='0.0.0.0',
+            port=self._port,
+            url_path=self._token,
 
-            listen='127.0.0.1',
-            port=5000,
-            url_path='TOKEN1'
+            # listen='127.0.0.1',
+            # port=5000,
+            # url_path='TOKEN1'
         )
         u.bot.set_webhook(
-            # 'https://{}.herokuapp.com/{}'.format(
-            #     self._app_name,
-            #     self._token,
-            # )
-            'https://4458c55b.ngrok.io/TOKEN1'
+            'https://{}.herokuapp.com/{}'.format(
+                self._app_name,
+                self._token,
+            )
+            # 'https://4458c55b.ngrok.io/TOKEN1'
         )
         u.start_polling()
         u.idle()
