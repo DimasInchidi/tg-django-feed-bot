@@ -28,10 +28,9 @@ class Database:
         cur.execute("SELECT time FROM last_update WHERE feed_id = 1")
         return cur.fetchone()[0]
 
-    def set_last_reload(self):
+    def set_last_reload(self, time_val):
         con = self._con
         cur = con.cursor()
-        time_val = float(datetime.now().timestamp())
         cur.execute("UPDATE last_reload SET time = %s", (time_val,))
         con.commit()
 
@@ -66,7 +65,8 @@ class Database:
             feed
         )
         con.commit()
-        self.set_last_reload()
+        last_time = [row[3] for row in feed]
+        self.set_last_reload(last_time)
 
     def get_posts(self):
         result = self.get_last_posts()
