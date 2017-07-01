@@ -66,6 +66,10 @@ class Database:
         )
         con.commit()
         last_time = [row[3] for row in feed]
+        if len(last_time) > 0:
+            last_time = max(last_time)
+        else:
+            last_time = float(datetime.now().timestamp())
         self.set_last_reload(last_time)
 
     def get_posts(self):
