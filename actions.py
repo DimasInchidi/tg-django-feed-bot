@@ -27,16 +27,16 @@ def callback_activity(bot, update):
         logging.info("newest feed is %s", feed)
         if len(feed) > 0:
             message = ""
-            jobs = ">>Jobs"
-            blogs = ">>Blogs"
-            links = ">>Links"
+            jobs = ">> Jobs"
+            blogs = ">> Blogs"
+            links = ">> Links"
             for i in feed:
                 if i[3] == 'link':
-                    links += '\n<a href="' + i[2] + '">' + i[1] + '</a>'
+                    links += '\n- <a href="' + i[2] + '">' + i[1] + '</a>'
                 if i[3] == 'blog':
-                    blogs += '\n<a href="' + i[2] + '">' + i[1] + '</a>'
+                    blogs += '\n- <a href="' + i[2] + '">' + i[1] + '</a>'
                 if i[3] == 'job':
-                    jobs += '\n<a href="' + i[2] + '">' + i[1] + '</a>'
+                    jobs += '\n- <a href="' + i[2] + '">' + i[1] + '</a>'
             if jobs != ">>Jobs":
                 message += jobs + '\n\n'
             if blogs != ">>Blogs":

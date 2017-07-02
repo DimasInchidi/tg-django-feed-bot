@@ -29,10 +29,11 @@ class Database:
         return cur.fetchone()[0]
 
     def set_last_reload(self, time_val):
-        con = self._con
-        cur = con.cursor()
-        cur.execute("UPDATE last_reload SET time = %s", (time_val,))
-        con.commit()
+        if time_val > 10:
+            con = self._con
+            cur = con.cursor()
+            cur.execute("UPDATE last_reload SET time = %s", (time_val,))
+            con.commit()
 
     def get_last_reload(self):
         con = self._con
@@ -69,7 +70,7 @@ class Database:
         if len(last_time) > 0:
             last_time = max(last_time)
         else:
-            last_time = float(datetime.now().timestamp())
+            last_time = 1
         self.set_last_reload(last_time)
 
     def get_posts(self):
