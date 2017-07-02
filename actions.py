@@ -37,11 +37,11 @@ def callback_activity(bot, update):
                     blogs += '\n- <a href="' + i[2] + '">' + i[1] + '</a>'
                 if i[3] == 'job':
                     jobs += '\n- <a href="' + i[2] + '">' + i[1] + '</a>'
-            if jobs != ">>Jobs":
+            if jobs != ">> Jobs":
                 message += jobs + '\n\n'
-            if blogs != ">>Blogs":
+            if blogs != ">> Blogs":
                 message += blogs + '\n\n'
-            if links != ">>Links":
+            if links != ">> Links":
                 message += links + '\n\n'
             bot.sendMessage(chat_id='-1001146340312', text=message, parse_mode='HTML', disable_web_page_preview=True)
             db.set_last_posts()
